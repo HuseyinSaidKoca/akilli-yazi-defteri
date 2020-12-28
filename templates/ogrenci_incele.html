@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" >
+	<link type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" >
+<!--===============================================================================================-->
+	<link type="text/css" href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" >
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animate/animate.css') }}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css-hamburgers/hamburgers.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animsition/css/animsition.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/daterangepicker/daterangepicker.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/util.css') }}" rel="stylesheet" >
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main13.css') }}" rel="stylesheet" >
+<!--===============================================================================================-->
+	<link type="text/css" href="{{ url_for('static', filename='css/bars2.css') }}" rel="stylesheet">
+	<script type="text/javascript">
+	  google.charts.load("current", {packages:["corechart"]});
+	  google.charts.setOnLoadCallback(drawChart);
+	  function drawChart() {
+		if ({{ogrenci["elakin"]}}==0 || {{ogrenci["dogrular"]}}==0) {
+		  var data = google.visualization.arrayToDataTable([
+		  ['Bölüm', 'Yanlış'],
+		  ['1.grup', 1],
+		  ['2.grup', 1],
+		  ['3.grup', 1],
+		  ['4.grup', 1],
+		  ['5.grup', 1]
+		]);
+		  var options = {
+		  backgroundColor: 'transparent',
+		  title: 'Öğrenciye Ait Yanlış Bulunamamıştır!',
+		  is3D: true,
+		};
+		}else {
+		  var data = google.visualization.arrayToDataTable([
+			['Bölüm', 'Yanlış'],
+			['1.grup', {{ogrenci["elakin"]}}],
+			['2.grup', {{ogrenci["omutuy"]}}],
+			['3.grup', {{ogrenci["oridsb"]}}],
+			['4.grup', {{ogrenci["zcgscp"]}}],
+			['5.grup', {{ogrenci["hvgfj"]}}]
+		  ]);
+		
+		var options = {
+		  backgroundColor: 'transparent',
+		  title: 'Harf Gruplarına Göre Yanlışlar',
+		  is3D: true,
+		};
+		}
+		var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+		chart.draw(data, options);
+	  }
+	</script>
+
+  </head>
+  <body>
+
+  	<div id="all">
+	<div class="split right">
+		<div style="padding-left: 75%;padding-top: 75%" class="centered">
+	<div class="container-login100-form-btn example-screen" style="padding-top: 50px">
+			<button onclick="yazdir()" class="login100-form-btn3 example-screen">Yazdır</button>				
+			</div>		
+	</div>
+	  <div style="padding-right: 20%" class="centered">
+		 <h1 class="title">
+		  Seviye {{ogrenci.seviye}}
+		  <div id="y4" style="font-size: 85%;" class="txt3 example-print"></div>
+		  <div class="progress">
+			<div class="bar shadow indeterminate-100 bees"></div>
+		  </div>
+	   </h1>
+	   <div style="font-size: 150%;" class="txt3">Doğru Sayısı: {{ogrenci.hgdogrular}}</div>
+	   <div style="font-size: 150%;" class="txt4 example-screen">Günlük Ödev: {{ogrenci.odev}}</div>
+	   <div id="y1" style="font-size: 150%;font-family: Ubuntu-Bold" class="txt6">
+	   	
+	   </div>
+	  
+	<form method="POST" class="login100-form validate-form p-l-85 p-r-85 p-t-15">
+
+		<div class="wrap-input100 validate-input example-screen" data-validate = "Numarayı giriniz">
+			<input id="t1" class="input100 example-screen" type="number" title="Hedef veya ödevi girip hangisi için girildiyse ona göre butona basın." name="sinir_ayar"  placeholder="Hedef/Ödev">
+			<span class="focus-input100 example-screen"></span>				
+		</div>	
+	
+		<div style="font-size: 15px" class="text-center p-t-2 p-b-2"></div>  
+		<div id="y3" style="font-size: 15px" class="text-center p-t-5 p-b-5"></div>
+		<table>
+ 		<tr>
+ 		<td>
+			<div class="container-login100-form-btn example-screen">
+				<button type="submit" class="login100-form-btn2 example-screen" data-placement="top" title="Öğrencinin sonraki harf grubuna geçmesi için yapması gereken doğru miktarını ayarlar." style="margin-left: 60%" name="btn" value="sinir">
+				Hedefi Ayarla</button>
+		</td>
+		<td>
+				<button type="submit" class="login100-form-btn2 example-screen" title="Öğrencinin günlük yapması gereken örnek miktarını ayarlar." style="margin-left: 70%" name="btn" value="odev">
+				Ödevi Ayarla
+
+			</button>
+			
+			</div>	
+		</td>
+		</tr>
+    </table>   
+			</div>
+			<div id="y3" style="font-size: 15px;margin-top: 80%;margin-right: 17%" class="text-center p-t-10 p-b-10 example-screen">
+				*Ayarlama yapıldığında görüntülemek<br> için sayfayı yenileyin.
+			</div>	
+	</form>	
+	
+	</div>
+
+	<div class="split left">
+
+	 <div class="centered">
+	 	<div style="font-size: 20px;padding-right: 30%" class="txt4 example-print">
+			{{ogrenci.isim}}
+	</div>
+	
+	   <div id="piechart_3d" style="width: 900px; height: 500px;padding-left: 15%"></div>
+	   <div id="zaman" style="font-size: 20px;margin-left: 33%" class="text-left p-t-13 p-b-23 example-screen">
+			 En Son Aktif Olunan Zaman:
+			 <div style="font-family: JosefinSans-Bold;font-size: 16px;padding-left: 3% " class="txt4 example-screen">
+			 {{ogrenci.zaman}}
+		</div>
+		</div>
+		<div id="zaman" style="font-size: 16px;margin-left: 33%" class="text-left p-t-5 p-b-23 example-print">
+			 Harf Gruplarına Göre Yanlış Sayıları:<br>
+			 <div class="txt5">
+				1.grup(e-l-a-k-i-n):   {{ogrenci.elakin}}<br>
+				2.grup(o-m-u-t-ü-y):   {{ogrenci.omutuy}}<br>
+				3.grup(ö-r-i-d-s-b):   {{ogrenci.oridsb}}<br>
+				4.grup(z-ç-g-s-c-p):   {{ogrenci.zcgscp}}<br>
+				5.grup(h-v-g-f-j):     {{ogrenci.hvgfj}}<br>
+			 </div>
+		</div>
+	 </div>
+	 <i style="padding: 5px" class='fa fa-long-arrow-alt-left example-screen'></i>
+	 <a href="/listele/{{ogrt_id}}" class="txt4 example-screen">
+			Listeye Geri Dön
+		</a>
+		  	
+	</div>
+
+</div>
+
+<style type="text/css">
+	.example-print {
+    display: none;
+}
+@media print {
+   .example-screen {
+       display: none;
+    }
+    .example-print {
+       display: block;
+    }
+}
+</style>
+
+	<script type="text/javascript">
+		function yazdir(){
+			window.print()
+		}
+		const bars = document.querySelectorAll('.bar');
+		  const progress = document.querySelectorAll('.progress');
+		  const seviye={{ogrenci["seviye"]}};
+		  const dogru={{ogrenci["dogrular"]}};
+		  const sdogru={{ogrenci["hgdogrular"]}};
+
+	  if (seviye==1) {
+		var element = document.getElementById("y1");
+		const sinir1={{ogrenci["sinir1"]}};
+		element.innerHTML = "Şuanki Hedef: "+sinir1;
+		bars.forEach((bar, index) => {
+			bar.style.width = `${(sdogru*100)/(sinir1)}%`;
+			var element2 = document.getElementById("y4");
+			element2.innerHTML = "İlerleme: "+Math.floor((sdogru*100)/(sinir1))+"%";
+		  })
+	  } else if (seviye==2) {
+		var element = document.getElementById("y1");
+		const sinir2={{ogrenci["sinir2"]}};
+		element.innerHTML = "Şuanki Hedef: "+sinir2;
+		bars.forEach((bar, index) => {
+			bar.style.width = `${(sdogru*100)/(sinir2)}%`;
+			var element2 = document.getElementById("y4");
+			element2.innerHTML = "İlerleme: "+Math.floor((sdogru*100)/(sinir2))+"%";
+
+		  })
+	  }else if (seviye==3) {
+		var element = document.getElementById("y1");
+		const sinir3={{ogrenci["sinir3"]}};
+		element.innerHTML = "Şuanki Hedef: "+sinir3;
+		bars.forEach((bar, index) => {
+			bar.style.width = `${(sdogru*100)/(sinir3)}%`;
+			var element2 = document.getElementById("y4");
+			element2.innerHTML = "İlerleme: "+Math.floor((sdogru*100)/(sinir3))+"%";
+
+		  })
+	  }else if (seviye==4) {
+		var element = document.getElementById("y1");
+		const sinir4={{ogrenci["sinir4"]}};
+		element.innerHTML = "Şuanki Hedef: "+sinir4;
+		bars.forEach((bar, index) => {
+			bar.style.width = `${(sdogru*100)/(sinir4)}%`;
+			var element2 = document.getElementById("y4");
+			element2.innerHTML = "İlerleme: "+Math.floor((sdogru*100)/(sinir4))+"%";
+
+		  })
+	  }else if (seviye==5) {
+		var element = document.getElementById("y1");
+		const sinir5={{ogrenci["sinir5"]}};
+		element.innerHTML = "Şuanki Hedef: "+sinir5;
+		bars.forEach((bar, index) => {
+			bar.style.width = `${(sdogru*100)/(sinir5)}%`;
+			var element2 = document.getElementById("y4");
+			element2.innerHTML = "İlerleme: "+Math.floor((sdogru*100)/(sinir5))+"%";
+
+		  })
+	  }
+	  
+	</script>
+	<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/animsition/js/animsition.min.js')}}"></script>
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/bootstrap/js/popper.js')}}"></script>
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/select2/select2.min.js')}}"></script>
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/daterangepicker/moment.min.js')}}"></script>
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/daterangepicker/daterangepicker.js')}}"></script>
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/countdowntime/countdowntime.js')}}"></script>
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
+
+ 	  </body>
+</html>

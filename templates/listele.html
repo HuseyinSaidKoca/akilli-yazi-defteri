@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Öğrenci Listesi</title>
+	<link type="text/css" href="{{ url_for('static', filename='css/liste3.css') }}" rel="stylesheet">
+  <link type="text/css" href="{{ url_for('static', filename='css/main8.css') }}" rel="stylesheet">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<div style="padding-left: 32%;padding-top: 3%">
+<table class="content-table">
+
+  <thead>
+
+    <tr> 
+      <a href="/" style="padding-left: 12%;color: #c80000" class="txt5">Çıkış Yap</a>
+      <a href="/ekle/{{ogt_id}}" style="padding-left: 8%" class="txt4">Kelime Ekle</a>
+      <th>No</th>
+      <th>İsim</th>
+      <th>Seviye</th>
+      <th>Doğrular</th>
+      <th>Yanlış</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  	{% for item in ogrenciler %}
+    <tr>
+      <td>{{item.ogrenci_no}}</td>
+      <td>
+      	<a href="/ogrenciler/{{item.ogrenci_id}}" style="color: #29a330">{{item.isim}}</a>
+      </td>
+      <td>{{item.seviye}}</td>
+      <td>{{item.dogrular}}</td>
+      <td>{{item.toplam_yanlis}}</td>
+    </tr>
+
+    {% endfor %}  
+ 
+  </tbody>
+
+</table>
+<style type="text/css">
+  .marka {
+  height: 50px;
+  background: white;
+  display: flex;
+  justify-content: center;
+}
+
+.centerBottom{
+  position:fixed;
+  height: 15px;
+    bottom:3%;
+}
+
+img {
+  align-self: flex-end;
+}
+</style>
+</div>
+<body>
+<div class="marka">
+          
+        </div>
+</body>
+</html>

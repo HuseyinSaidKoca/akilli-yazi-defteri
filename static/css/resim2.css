@@ -1,0 +1,16 @@
+.marka {
+  height: 50px;
+  background: white;
+  display: flex;
+  justify-content: center;
+}
+
+.centerBottom{
+  position:fixed;
+    bottom:0px;
+    left:50%;
+}
+
+img {
+  align-self: flex-end;
+}

@@ -1,0 +1,10 @@
+.marka {
+  height: 50px;
+  background: white;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  align-self: flex-end;
+}

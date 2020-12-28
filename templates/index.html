@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+	<title>Öğretmen Giriş Ekranı</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="background-image" type="image/png" href="../images/background.jpg"/>
+<!--===============================================================================================-->
+	<link type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" >
+<!--===============================================================================================-->
+	<link type="text/css" href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" >
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animate/animate.css') }}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css-hamburgers/hamburgers.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animsition/css/animsition.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/daterangepicker/daterangepicker.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/util.css') }}" rel="stylesheet" >
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main8.css') }}" rel="stylesheet" >
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/resim2.css') }}" rel="stylesheet" >
+<!--===============================================================================================-->
+
+</head>
+
+<body>
+	 <div class="centered">
+	<div class="limiter">
+			<div class="wrap-login100">
+				<form method="POST" class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+					<span class="login100-form-title">
+						Öğretmen
+					</span>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="ID'nizi giriniz">
+						<input class="input100" type="number" name="ogrt_id" placeholder="Öğretmen ID">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Şifrenizi giriniz">
+						<input class="input100" type="password" name="pass" placeholder="Şifre">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="text-right p-t-13 p-b-23">
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">Giriş Yap</button>						
+					</div>
+
+					<div class="flex-col-c p-t-45 p-b-40">
+						<a href="/ogrenci" class="txt4">
+						Öğrenci Girişi
+						</a>
+						<div class="text-center p-t-0 p-b-0">
+							<hr style="width: 90px; background-color:#6f88ea">
+						</div>
+						<a href="/register" class="txt4">
+						Öğrenci Kaydı
+					
+						</a>
+
+					</div>
+				</form>
+				
+			</div>
+			</div>
+				
+	</div>
+			
+<style type="text/css">
+  .marka {
+  height: 660px;
+  background: white;
+  display: flex;
+  justify-content: center;
+}
+
+.centerBottom{
+  position:fixed;
+  height: 15px;
+    bottom:3%;
+    padding-right: 10%;
+}
+
+img {
+  align-self: flex-end;
+}
+</style>
+			
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/animsition/js/animsition.min.js')}}"></script>
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/bootstrap/js/popper.js')}}"></script>
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/select2/select2.min.js')}}"></script>
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/daterangepicker/moment.min.js')}}"></script>
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/daterangepicker/daterangepicker.js')}}"></script>
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='vendor/countdowntime/countdowntime.js')}}"></script>
+		<!--===============================================================================================-->
+			<script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
+
+<div class="marka">
+          			<img src="{{url_for('static', filename='images/50 marka.png')}}">
+        		</div>
+			
+</body>
+</html>
